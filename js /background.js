@@ -10,14 +10,14 @@ browser.webRequest.onBeforeRequest.addListener(
 	(details) => {
 		const url = new URL(details.url);
 		if (url.hostname.endsWith("youtu.be") && url.pathname.length > 1) {
-			return { redirectUrl: "https://piped.kavin.rocks/watch?v=" + url.pathname.substr(1) };
+			return { redirectUrl: "https://piped.homelab.teamcollins.net/watch?v=" + url.pathname.substr(1) };
 		}
 		if (
 			url.hostname.endsWith("youtube.com") ||
 			url.hostname.endsWith("youtube-nocookie.com") ||
 			INVIDIOUS_INSTANCES.includes(url.hostname)
 		) {
-			url.hostname = "piped.kavin.rocks";
+			url.hostname = "piped.homelab.teamcollins.net";
 			return { redirectUrl: url.href };
 		}
 	},
